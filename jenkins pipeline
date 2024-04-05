@@ -1,1 +1,46 @@
 
+pipeline {
+    agent any // Specifies that the pipeline can execute on any available agent
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checks out the source code from your version control system (e.g., Git)
+                git 'https://github.com/yourusername/yourrepository.git'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Example: Execute a shell command to build your project
+                sh 'mvn clean install'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Example: Execute a shell command to run tests
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                // Example: Execute a shell command to deploy your application
+                sh 'mvn deploy'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // This block runs when the pipeline is successful
+            echo 'Pipeline succeeded! Deployed successfully.'
+        }
+        
+        failure {
+            // This block runs when the pipeline fails
+            echo 'Pipeline failed! Deployment unsuccessful.'
+        }
+    }
+}
