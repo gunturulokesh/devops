@@ -1,0 +1,133 @@
+
+working directory(untrached file) --->staging area(indexed file) ---> local repository(committed file) 
+
+git init(ONE TIME USE)
+git config --global user.name "sandeep"               (ONE TIME USE)
+git config --global user.mail "sandeep@gmail.com"     (ONE TIME USE)
+(convert folder git project in such a way that you can start triggering git commands and creates hidden folder called .git)
+git status(all files that we have in git project directory it shows as untracked files(files which are in working directory)
+
+to move untracked files into staging area
+git add filename( that one file moves into staging area)
+git add .(hundreds of files)
+. represents current working directory and ..represents parent directory
+git status
+bring back from staging to working directory
+git rm --cached filename
+or 
+git reset filename
+from staging area to local repository
+git commit -m "first commit"
+to move remaining files 
+git add .
+git commit -m "second commit"
+git log (shows list of commits)
+every commit generates a unique id called commit id
+
+git log shortcut
+
+git log --oneline
+shows first 7 characters and commit message
+
+why cant we send files directly into local repository(for ex saving and not saving notepad file difference while shutdown)
+data is getting stored in your storage harddisk(PERMANENT) data of untitled file is present in  RAM is volatile
+staging area is location where git performs indexing.(it assigns pointers and tries to prepare files in such a way that they will become ready to moved in local repository)
+once moved into local repository version controlling(someone is tracking) starts
+
+.gitignore(private files)
+cat >.gitignore
+file1
+file2
+ git status
+git stash also hides private data
+
+
+once individual functionalities or features are completely created then merge them with central branch called master branch.
+main advantage of this process is it will allow you to create organised way.(to avoid confusion)
+
+
+list of all local branches
+git branch
+
+list of all branches(local and remote)
+git branch -a
+
+create a branch
+git branch branch_name
+
+To move into a branch
+git checkout branch_name
+
+to create and also move into branch
+git checkout -b branch_name
+
+to merge a branch
+git merge branch_name
+
+to delete a branch that is merged(soft delete)
+git branch -d branch_name
+
+to delete a branch that is not merged(hard delete)
+git branch -D branch_name
+
+whenever a branch is created at the time of creating branch upto that point whatever is parent branch commit history all that commit history is copied to new branch.
+
+
+the file you create on which branch and modify git does not consider,it consider only to which branch it is committed.
+the file that is created is present is all branches until committed.
+
+=========================================================================================================================================================================================================
+remote repository(git hub)
+git remote add origin https://github.com/venkatadevops1995/conco.git(ONE TIME USE)
+
+git push -u origin master(branch name)
+
+git clone https://github.com/venkatadevops1995/conco.git(ONE TIME USE)
+
+
+
+git fetch download only modified files
+it will download modified data and place on seperate branch called remote branch 
+go and checkin remote branch if you want to merge then merge with local branch 
+if any file is changed in github use
+git fetch 
+then checkout to branch in github for example
+git checkout remotes/origin/master
+see modified data
+then checkout to different branch for example
+git checkout master
+then merge with master branch 
+git merge remotes/origin/master if you get error use below command
+git merge --allow-unrelated-histories origin/master
+
+
+
+git pull also downloads only modified data but it doesnt ask your permissions it directly merges with existing branch structure.
+if you get error use below commands
+git branch --set-upstream-to=origin/master branchname
+git config pull.rebase false
+git merge --allow-unrelated-histories origin/master
+
+
+
+
+how to merge master branch in github with main branch
+
+git fetch origin
+git checkout main
+git merge origin/master
+Resolve Conflicts (if any): If there are any merge conflicts, resolve them manually by editing the conflicted files, then add the resolved files and commit the changes.
+git push origin main
+
+
+
+
+
+
+git config --global --unset user.name test
+(to remove username duplicate)
+
+
+
+
+
